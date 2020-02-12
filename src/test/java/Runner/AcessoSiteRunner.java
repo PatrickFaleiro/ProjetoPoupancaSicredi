@@ -1,24 +1,23 @@
 package Runner;
 
 import Component.AcessoSiteComponent;
+import Reader.LeituraDados;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AcessoSiteRunner implements AcessoSiteComponent {
 
-    //Acesso ao site
-    private static final String CHROME_DRIVER = "C:\\webdriver\\chromedriver.exe";
-    private static final String HTTP_SITE = "https://www.sicredi.com.br/html/ferramenta/simulador-investimento-poupanca/";
-
     public static WebDriver driver;
     public static WebDriverWait wait;
+    LeituraDados dados = new LeituraDados();
 
     public void acessoSite(){
-        System.setProperty("webdriver.chrome.driver", CHROME_DRIVER);
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver,10);
-        driver.get(HTTP_SITE);
+        driver.get(dados.pegaAcessoPagina());
         driver.manage().window().maximize();
     }
 
