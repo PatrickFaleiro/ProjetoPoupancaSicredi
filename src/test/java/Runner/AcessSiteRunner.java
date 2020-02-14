@@ -1,27 +1,27 @@
 package Runner;
 
-import Component.AcessoSiteComponent;
-import Reader.LeituraDados;
+import Component.AcessSiteComponent;
+import Reader.DataReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AcessoSiteRunner implements AcessoSiteComponent {
+public class AcessSiteRunner implements AcessSiteComponent {
 
     public static WebDriver driver;
     public static WebDriverWait wait;
-    LeituraDados dados = new LeituraDados();
+    DataReader data = new DataReader();
 
-    public void acessoSite(){
+    public void acessSite(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver,10);
-        driver.get(dados.pegaAcessoPagina());
+        driver.get(data.getConfigurationProperty("ACESS_SITE"));
         driver.manage().window().maximize();
     }
 
-    public void sairSite(){
+    public void exitSite(){
         driver.quit();
     }
 

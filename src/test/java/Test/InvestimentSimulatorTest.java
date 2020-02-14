@@ -8,5 +8,5 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "C:\\projects\\ProjetoPoupancaSicredi\\src\\test\\java\\Feature",
         glue = { "StepDefinitions" })
-public class SimulacaoInvestimentoTest {
+public class InvestimentSimulatorTest {
 }
