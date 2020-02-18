@@ -15,29 +15,29 @@ public class InvestimentSimulatorRunner implements InvestimentSimulatorComponent
 
     DataReader data = new DataReader();
 
-    private static String geraValorRandomico(int min, int max) {
+    private static String generateRandomValue(int min, int max) {
 
-        DecimalFormat formato = new DecimalFormat("0.00");
+        DecimalFormat moneyFormat = new DecimalFormat("0.00");
         if (min >= max) {
             throw new IllegalArgumentException("valor máximo deve ser maior que o mínimo");
         }
 
         Random numeroRandomico = new Random();
-        return formato.format(numeroRandomico.nextInt((max - min) + 1) + min);
+        return moneyFormat.format(numeroRandomico.nextInt((max - min) + 1) + min);
     }
 
     public void insertApplicationValue() {
 
-        AcessSiteRunner.getDriver().findElement(By.id(data.getConfigurationProperty("APPICATION_VALUE"))).sendKeys(geraValorRandomico(20, 100));
+        AcessSiteRunner.getDriver().findElement(By.id(data.getConfigurationProperty("APPICATION_VALUE"))).sendKeys(generateRandomValue(20, 100));
 
     }
 
     public void insertSavingsValue() {
-        AcessSiteRunner.getDriver().findElement(By.id(data.getConfigurationProperty("SAVINGS_MONTH_VALUE"))).sendKeys(geraValorRandomico(20, 100));
+        AcessSiteRunner.getDriver().findElement(By.id(data.getConfigurationProperty("SAVINGS_MONTH_VALUE"))).sendKeys(generateRandomValue(20, 100));
     }
 
     public void insertSavingPeriod() {
-        AcessSiteRunner.getDriver().findElement(By.id(data.getConfigurationProperty("SAVINGS_PERIOD"))).sendKeys(geraValorRandomico(1, 12));
+        AcessSiteRunner.getDriver().findElement(By.id(data.getConfigurationProperty("SAVINGS_PERIOD"))).sendKeys(generateRandomValue(1, 12));
     }
 
     public void clickButtonOk() {
@@ -54,11 +54,11 @@ public class InvestimentSimulatorRunner implements InvestimentSimulatorComponent
     }
 
     public void insertValueLowerThanTwentyReaisOnApplicationField(){
-        AcessSiteRunner.getDriver().findElement(By.id(data.getConfigurationProperty("APPICATION_VALUE"))).sendKeys(geraValorRandomico(0, 19));
+        AcessSiteRunner.getDriver().findElement(By.id(data.getConfigurationProperty("APPICATION_VALUE"))).sendKeys(generateRandomValue(0, 19));
     }
 
     public void insertValeuLowerThanTwentyReaisOnSavingsField(){
-        AcessSiteRunner.getDriver().findElement(By.id(data.getConfigurationProperty("SAVINGS_MONTH_VALUE"))).sendKeys(geraValorRandomico(0, 19));
+        AcessSiteRunner.getDriver().findElement(By.id(data.getConfigurationProperty("SAVINGS_MONTH_VALUE"))).sendKeys(generateRandomValue(0, 19));
     }
 
     public void exitApplicationField(){
